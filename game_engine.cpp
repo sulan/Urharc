@@ -3,6 +3,18 @@
 #include <ctime>
 #include <random>
 
+
+#ifdef WIN32
+#include <sstream>
+std::string to_string(int a) {
+  stringstream ss{};
+  ss<<a;
+  return ss.str();
+}
+#else
+using std::to_string;
+#endif
+
 GameEngine::GameEngine (sf::RenderWindow& w, sf::Font f, double width, double height)
  : XX{width}, YY{height-20}, window(w), font{f}, tree(Box({0,0},{XX,YY}))  {
   std::minstd_rand eng (time(NULL));
@@ -204,9 +216,9 @@ void GameEngine::drawStatusBar() {
   bar.setFillColor(sf::Color::White);
   window.draw(bar);
   std::string elet ("Elet ");
-  elet += std::to_string(player->getElet());
+  elet += to_string(player->getElet());
   std::string lazer ("Lezer toltottsege: ");
-  lazer += std::to_string(player->getLaserToltottseg());
+  lazer += to_string(player->getLaserToltottseg());
   lazer += "%";
   sf::Text text (elet,font,15);
   text.setColor(sf::Color::Black);
