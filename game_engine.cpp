@@ -4,7 +4,7 @@
 #include <random>
 
 
-#ifdef WIN32
+#ifdef _WIN32
 #include <sstream>
 std::string to_string(int a) {
   stringstream ss{};
