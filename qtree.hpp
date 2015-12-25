@@ -5,6 +5,7 @@
 //#include <vector>
 #include <set>
 #include <utility>
+#include <stdexcept>
 
 #ifdef __TESZTELUNK__
   #include "SFML/Graphics.hpp"
